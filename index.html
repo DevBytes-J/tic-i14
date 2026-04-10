@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo Card</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <div class="card-wrap">
+        <div class="card-bg-tag" aria-hidden="true">&lt;/&gt;</div>
+      <article
+        data-testid="test-todo-card"
+        class="card"
+        aria-label="Todo task card"
+      >
+        <!-- glow -->
+        <div class="card__glow" aria-hidden="true"></div>
+
+        <header class="card__header">
+          <label class="checkbox-wrap" aria-label="Mark task as complete">
+            <input
+              type="checkbox"
+              data-testid="test-todo-complete-toggle"
+              id="todo-complete"
+            />
+            <span class="checkbox-custom" aria-hidden="true">
+              <svg
+                viewBox="0 0 12 10"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <polyline points="1,5 4.5,9 11,1" />
+              </svg>
+            </span>
+          </label>
+
+          <div class="card__title-group">
+            <h2
+              data-testid="test-todo-title"
+              class="card__title"
+              id="todo-title"
+            >
+              Survive the 10am Standup Nobody Asked For
+            </h2>
+            <div class="card__badges">
+              <span
+                data-testid="test-todo-priority"
+                class="badge badge--high"
+                aria-label="Priority: High"
+              >
+                <span class="badge__dot" aria-hidden="true"></span>High
+              </span>
+              <span
+                data-testid="test-todo-status"
+                class="badge badge--status"
+                id="todo-status"
+                aria-label="Status: In Progress"
+              >
+                In Progress
+              </span>
+            </div>
+          </div>
+        </header>
+
+        <!-- Description -->
+        <p data-testid="test-todo-description" class="card__description">
+          Reply to 7 unread emails before the 10am.
+        </p>
+
+        <!-- Divider -->
+        <div class="card__divider" aria-hidden="true"></div>
+
+        <!-- Meta row -->
+        <div class="card__meta">
+          <div class="meta-item">
+            <svg
+              class="meta-icon"
+              viewBox="0 0 16 16"
+              fill="none"
+              aria-hidden="true"
+            >
+              <rect
+                x="1"
+                y="2"
+                width="14"
+                height="13"
+                rx="2"
+                stroke="currentColor"
+                stroke-width="1.5"
+              />
+              <path d="M1 6h14" stroke="currentColor" stroke-width="1.5" />
+              <path
+                d="M5 1v2M11 1v2"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+            <time
+              data-testid="test-todo-due-date"
+              datetime="2026-04-17T18:00:00Z"
+              aria-label="Due April 17, 2026"
+            >
+              Apr 17, 2026
+            </time>
+          </div>
+          <div class="meta-item meta-item--time">
+            <svg
+              class="meta-icon"
+              viewBox="0 0 16 16"
+              fill="none"
+              aria-hidden="true"
+            >
+              <circle
+                cx="8"
+                cy="8"
+                r="6.5"
+                stroke="currentColor"
+                stroke-width="1.5"
+              />
+              <path
+                d="M8 4.5V8l2.5 2"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+            <span
+              data-testid="test-todo-time-remaining"
+              id="todo-time-remaining"
+              aria-live="polite"
+            ></span>
+          </div>
+        </div>
+
+        <!-- Tags -->
+        <ul
+          data-testid="test-todo-tags"
+          class="card__tags"
+          role="list"
+          aria-label="Tags"
+        >
+          <li role="listitem">
+            <span class="tag" data-testid="test-todo-tag-work">work</span>
+          </li>
+          <li role="listitem">
+            <span class="tag" data-testid="test-todo-tag-urgent">urgent</span>
+          </li>
+          <li role="listitem"><span class="tag">emails</span></li>
+        </ul>
+
+        <!-- Actions -->
+        <footer class="card__actions">
+          <button
+            data-testid="test-todo-edit-button"
+            class="btn btn--edit"
+            aria-label="Edit task"
+          >
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path
+                d="M11.5 2.5a1.414 1.414 0 0 1 2 2L5 13H3v-2L11.5 2.5Z"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Edit
+          </button>
+          <button
+            data-testid="test-todo-delete-button"
+            class="btn btn--delete"
+            aria-label="Delete task"
+          >
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path
+                d="M2 4h12M6 4V2h4v2M5 4l.5 9h5L11 4"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Delete
+          </button>
+        </footer>
+      </article>
+      </div>
+    </main>
+
+    <!-- Edit Modal -->
+    <div
+      id="edit-modal"
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="edit-modal-title"
+      hidden
+    >
+      <div class="modal__backdrop"></div>
+      <div class="modal__box">
+        <div class="modal__glow" aria-hidden="true"></div>
+        <header class="modal__header">
+          <h3 id="edit-modal-title" class="modal__title">Edit Task</h3>
+          <button class="modal__close" aria-label="Close edit modal">
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path
+                d="M3 3l10 10M13 3L3 13"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+        </header>
+
+        <form id="edit-form" class="modal__form" novalidate>
+          <div class="field">
+            <label class="field__label" for="edit-title">Title</label>
+            <input class="field__input" id="edit-title" type="text" required />
+          </div>
+          <div class="field">
+            <label class="field__label" for="edit-desc">Description</label>
+            <textarea
+              class="field__input field__textarea"
+              id="edit-desc"
+              rows="3"
+            ></textarea>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label class="field__label" for="edit-priority">Priority</label>
+              <select class="field__input field__select" id="edit-priority">
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="field__label" for="edit-status">Status</label>
+              <select class="field__input field__select" id="edit-status">
+                <option value="Pending">Pending</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Done">Done</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal__actions">
+            <button type="button" class="btn btn--ghost modal-cancel">
+              Cancel
+            </button>
+            <button type="submit" class="btn btn--save">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Delete Modal -->
+    <div
+      id="delete-modal"
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="delete-modal-title"
+      hidden
+    >
+      <div class="modal__backdrop"></div>
+      <div class="modal__box modal__box--sm">
+        <div class="modal__glow modal__glow--red" aria-hidden="true"></div>
+        <header class="modal__header">
+          <h3 id="delete-modal-title" class="modal__title">Delete Task</h3>
+          <button class="modal__close" aria-label="Close delete modal">
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path
+                d="M3 3l10 10M13 3L3 13"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+        </header>
+        <p class="modal__body">
+          Are you sure you want to delete
+          <strong id="delete-task-name"></strong>? This action cannot be undone.
+        </p>
+        <div class="modal__actions">
+          <button type="button" class="btn btn--ghost modal-cancel">
+            Cancel
+          </button>
+          <button type="button" id="confirm-delete" class="btn btn--danger">
+            Delete task
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
