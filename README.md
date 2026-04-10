@@ -4,7 +4,7 @@ A clean, accessible, and fully testable Todo Item Card built with vanilla HTML, 
 
 ## Live Demo
 
-[View live](#) 
+[View live](https://tic-i14.vercel.app/) 
 
 ## Features
 
